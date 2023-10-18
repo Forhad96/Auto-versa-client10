@@ -4,7 +4,7 @@ import Brands from "../components/Brands/Brands";
 import Cards from "./Cards";
 import CarsDetails from "./CarsDetails/CarsDetails";
 import ProductCard from "./ProductCard";
-import Cars from "./cars";
+
 
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
       <div>
         <Banner></Banner>
         <Brands></Brands>
-        <Cars></Cars>
+
         <Cards></Cards>
         <CarsDetails></CarsDetails>
         <ProductCard></ProductCard>
