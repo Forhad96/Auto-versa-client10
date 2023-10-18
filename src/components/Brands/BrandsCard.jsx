@@ -7,14 +7,21 @@ const location = useLocation()
 console.log(location);
   const handleBrandCars =(_id)=>{
     console.log(_id);
-    // const brandCars =  
     navigate(`/cars/${_id}`)
-    // navigate('/brandCars')
+
+
+    
+    fetch(`http://localhost:7001/brands/${_id}`)
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+    })
+
     
   }
   return (
     <div
-      onClick={() => handleBrandCars(`${brand.brand}`)}
+      onClick={() => handleBrandCars(`${brand._id}`)}
       
       className=" m-4 relative overflow-hidden bg-slate-600 bg-blend-darken rounded-lg max-w-ful shadow-lg group"
     >
