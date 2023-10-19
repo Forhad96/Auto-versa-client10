@@ -6,12 +6,14 @@ import Login from "../pages/Register/Login";
 import SingUp from "../pages/Register/SingUp";
 import AddProduct from "../pages/AddProduct/AddProduct";
 import CarsDetails from "../pages/CarsDetails/CarsDetails";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
