@@ -1,8 +1,19 @@
 import { useParams } from "react-router-dom";
+import FetchData from "../../components/hooks/FetchData";
+import { useEffect, useState } from "react";
 
 const UpdateProduct = () => {
     const {id} = useParams()
-    console.log(id);
+    const [updateData,setUpdateData]=useState([])
+    const {allData,loading} = FetchData(`http://localhost:7001/brands/${id}`);
+
+    useEffect(()=>{
+        const filteredData = allData?.models?.find(data => data.name === id)
+        setUpdateData(filteredData)
+    },[allData,id])
+if(loading){
+    return <h2 className="text-center text-6xl">Loading.....</h2>
+}
   const handleUpdateProduct = async (event) => {
     event.preventDefault();
     const form = new FormData(event.target);
@@ -10,8 +21,6 @@ const UpdateProduct = () => {
     form.forEach((value, key) => {
       newProduct[key] = value;
     });
-
-    console.log(newProduct);
 
     try {
       const res = await fetch(`http://localhost:7001/brands/${id}`,{
@@ -36,7 +45,7 @@ const UpdateProduct = () => {
             {/* Row */}
             <div className="w-full lg:w-7/12 bg-white dark:bg-gray-700 p-5 rounded-lg lg:rounded-l-none">
               <h3 className="py-4 text-2xl text-center text-gray-800 dark:text-white">
-                Add Listing product
+                Update information {updateData?.name}
               </h3>
               <form
                 onSubmit={handleUpdateProduct}
@@ -56,6 +65,7 @@ const UpdateProduct = () => {
                       id="brandName"
                       name="brandName"
                       type="text"
+                      defaultValue={updateData?.brandName}
                       placeholder="brandName"
                     />
                   </div>
@@ -71,6 +81,7 @@ const UpdateProduct = () => {
                       id="name"
                       name="name"
                       type="text"
+                      defaultValue={updateData?.name}
                       placeholder="name"
                     />
                   </div>
@@ -86,6 +97,7 @@ const UpdateProduct = () => {
                       id="type"
                       name="type"
                       type="text"
+                      defaultValue={updateData?.type}
                       placeholder="type"
                     />
                   </div>
@@ -105,6 +117,7 @@ const UpdateProduct = () => {
                       id="image"
                       name="image"
                       type="text"
+                      defaultValue={updateData?.image}
                       placeholder="image"
                     />
                   </div>
@@ -120,6 +133,7 @@ const UpdateProduct = () => {
                       id="price"
                       name="price"
                       type="text"
+                      defaultValue={updateData?.price}
                       placeholder="price"
                     />
                   </div>
@@ -135,6 +149,7 @@ const UpdateProduct = () => {
                       id="color"
                       name="color"
                       type="text"
+                      defaultValue={updateData?.color}
                       placeholder="color"
                     />
                   </div>
@@ -153,6 +168,7 @@ const UpdateProduct = () => {
                       id="fuelType"
                       name="fuelType"
                       type="text"
+                      defaultValue={updateData?.fuelType}
                       placeholder="fuelType"
                     />
                   </div>
@@ -168,6 +184,7 @@ const UpdateProduct = () => {
                       id="year"
                       name="year"
                       type="text"
+                      defaultValue={updateData?.year}
                       placeholder="year"
                     />
                   </div>
@@ -183,6 +200,7 @@ const UpdateProduct = () => {
                       id="engineSize"
                       name="engineSize"
                       type="text"
+                      defaultValue={updateData?.engineSize}
                       placeholder="engineSize"
                     />
                   </div>
@@ -201,6 +219,7 @@ const UpdateProduct = () => {
                       id="cylinder"
                       name="cylinder"
                       type="text"
+                      defaultValue={updateData?.cylinder}
                       placeholder="cylinder"
                     />
                   </div>
@@ -216,6 +235,7 @@ const UpdateProduct = () => {
                       id="shortDescription"
                       name="shortDescription"
                       type="text"
+                      defaultValue={updateData?.shortDescription}
                       placeholder="shortDescription"
                     />
                   </div>
@@ -231,6 +251,7 @@ const UpdateProduct = () => {
                       id="rating"
                       name="rating"
                       type="text"
+                      defaultValue={updateData?.rating}
                       placeholder="rating"
                     />
                   </div>
@@ -248,6 +269,7 @@ const UpdateProduct = () => {
                     id="longDescription"
                     type=""
                     name="longDescription"
+                    defaultValue={updateData?.longDescription}
                     placeholder="longDescription"
                   />
                 </div>
