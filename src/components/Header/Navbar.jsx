@@ -1,7 +1,21 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut =()=>{
+        logOut()
+          .then(() => {
+            toast.success("LogOut Successful");
+          })
+          .catch((error) => {
+            toast.error(error.code);
+          });
+  }
+
   const links = (
     <>
       <li>
@@ -46,39 +60,44 @@ const Navbar = () => {
           <a className="btn btn-ghost normal-case text-xl">AutoVersa</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-              {links}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="https://www.svgrepo.com/show/530412/user.svg" />
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
-          <Link to='/login'>
-
-          <button className="btn">Login</button>
-          </Link>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src="https://www.svgrepo.com/show/530412/user.svg" />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <a className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li>
+                  <a onClick={handleLogOut}>Logout</a>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div>
+              <Link to="/login">
+                <button className="btn">Login</button>
+              </Link>
+              <Link to="/login">
+                <button className="btn">Register</button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     );
