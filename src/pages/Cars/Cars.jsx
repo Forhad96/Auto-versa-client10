@@ -1,12 +1,11 @@
 import { useParams } from "react-router-dom";
-import FetchData from "../../components/hooks/FetchData";
 import useGetBrands from "../../components/hooks/useGetBrands";
 import CarsCard from "./CarsCard";
 import Slider from "../../components/Slider/Slider";
 
 
 
-const BrandCars = () => {
+const Cars = () => {
     const {id} =useParams()
     const {brands,loading}= useGetBrands()
     if(loading){
@@ -38,4 +37,4 @@ const images = [
     );
 };
 
-export default BrandCars;
+export default Cars;

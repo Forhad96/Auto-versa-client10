@@ -2,8 +2,16 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 
 const CarsCard = ({ model }) => {
-          const handleCarDetails = (id)=>{
-            console.log(id);
+          const handleCarDetails = (name)=>{
+            console.log(name);
+                fetch(`http://localhost:7001/brands/${name}`)
+                  .then((res) => res.json())
+                  .then((data) => {
+                    console.log(data);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
           }
   return (
     <>
@@ -23,7 +31,7 @@ const CarsCard = ({ model }) => {
               <div className="flex items-center justify-between">
                 <div className="font-bold text-xl mb-2">{model.name}</div>
                 <span className="inline-block bg-teal-200 text-teal-800 py-1 px-4 text-xs rounded-full uppercase font-semibold tracking-wide">
-                  New
+                  Year:-{model?.year}
                 </span>
               </div>
               <p className=" text-md font-medium">{model.shortDescription}</p>
@@ -49,20 +57,24 @@ const CarsCard = ({ model }) => {
               </div>
             </div>
           </div>
-          <Link to={ `/carsDetails/${model.name}`}>
-
-          <button onClick={()=>handleCarDetails(model.name)} className="btn btn-success w-full">view details</button>
+          <Link to={`/carsDetails/${model.name}`}>
+            <button
+              onClick={() => handleCarDetails(model.name)}
+              className="btn btn-success w-full"
+            >
+              view details
+            </button>
           </Link>
 
           <div className="px-6 py-4">
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-              #photography
+              Fuel Type:-{model?.fuelType}
             </span>
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-              #travel
+              Engine Size:-{model?.engineSize}
             </span>
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
-              #winter
+              Cylinder:-{model?.cylinder}
             </span>
           </div>
         </div>

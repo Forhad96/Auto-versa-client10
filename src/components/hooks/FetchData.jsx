@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const FetchData = (url) => {
-  const [brands, setBrands] = useState([]);
+  const [allData, setAllData] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -9,12 +9,12 @@ const FetchData = (url) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setBrands(data);
+        setAllData(data);
         setLoading(false); // Update loading state when data is loaded
       });
   }, [url]); 
 
-  return { brands, loading };
+  return {    allData, loading };
 };
 
 export default FetchData;

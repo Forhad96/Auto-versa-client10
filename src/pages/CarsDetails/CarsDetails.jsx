@@ -1,37 +1,37 @@
 import { useParams } from "react-router-dom";
-import useGetBrands from "../../components/hooks/useGetBrands";
-import { useState } from "react";
-import { useEffect } from "react";
+// import useGetBrands from "../../components/hooks/useGetBrands";
+// import { useState } from "react";
+// import { useEffect } from "react";
+import FetchData from "../../components/hooks/FetchData";
 
 const CarsDetails = () => {
-  const {id} = useParams()
-  const {brands,loading}= useGetBrands()
-  const [cars,setCars] = useState()
+  const { id } = useParams();
+  // const { brands, loading } = useGetBrands();
 
-  if(loading){
-    return <h2>Loading,,,,,,,</h2>
+  const { allData,loading } = FetchData(`http://localhost:7001/brands/${id}`);
+  const car = allData.models?.find(model=> model.name === id)
+
+  if (loading) {
+    return <h2>Loading,,,,,,,</h2>;
   }
 
-    const models = brands.map((brand) => brand.models);
-  const data = {}
-    models.forEach((model) => {
-      model.forEach((car) => {
-        const result = Object.values(car);
-        const filteredCar = result.find((carName) => carName === id);
-        if (filteredCar) {
-          data.car = car
-        }
-      });
-    });
-    const {car} =data
+  const handleAddCart = () => {
 
+    fetch(`http://localhost:7001/cart`,{
+      method:'POST',
+      headers:{
+        "content-type":"application/json"
+      },
+      body:JSON.stringify(car)
+    })
+      .then(res => res.json())
+      .then((data) => {
+        console.log(data)
+        
+      })
 
+  };
 
-
-// console.log(result);
-// console.log(models[0][0].name);
-
-// console.log(filtered);
   return (
     <section className="py-20 font-poppins dark:bg-gray-800">
       <div className="max-w-6xl px-4 mx-auto">
@@ -147,7 +147,7 @@ const CarsDetails = () => {
                   </span>
                   <div>
                     <h2 className="text-sm font-bold text-gray-700 lg:text-lg dark:text-gray-400">
-                      Have question about buying an Oneplus
+                      Have question about buying an
                     </h2>
                     <a
                       className="text-xs text-blue-400 lg:text-sm dark:text-blue-200"
@@ -163,7 +163,9 @@ const CarsDetails = () => {
           <div className="w-full px-4 md:w-1/2">
             <div className="lg:pl-20">
               <div className="mb-6 ">
-                <span className="text-red-500 dark:text-red-200">{car?.brandName}</span>
+                <span className="text-red-500 dark:text-red-200">
+                  {car?.brandName}
+                </span>
                 <h2 className="max-w-xl mt-2 mb-4 text-5xl font-bold md:text-6xl font-heading dark:text-gray-300">
                   {car?.name}
                 </h2>
@@ -379,8 +381,11 @@ const CarsDetails = () => {
                 </div>
               </div>
               <div className="mt-6 ">
-                <button className="w-full px-4 py-2 font-bold text-white bg-blue-400 lg:w-96 hover:bg-blue-500">
-                  Continue
+                <button
+                  onClick={ handleAddCart}
+                  className="w-full px-4 py-2 font-bold text-white bg-blue-400 lg:w-96 hover:bg-blue-500"
+                >
+                  Add Cart
                 </button>
               </div>
               <div className="flex items-center mt-6 ">
