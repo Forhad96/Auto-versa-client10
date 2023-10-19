@@ -1,7 +1,9 @@
+import { useParams } from "react-router-dom";
+
 const UpdateProduct = () => {
-
-
-  const handleUpdateProduct = (event) => {
+    const {id} = useParams()
+    console.log(id);
+  const handleUpdateProduct = async (event) => {
     event.preventDefault();
     const form = new FormData(event.target);
     const newProduct = {};
@@ -11,11 +13,19 @@ const UpdateProduct = () => {
 
     console.log(newProduct);
 
-
-
-
-
-    
+    try {
+      const res = await fetch(`http://localhost:7001/brands/${id}`,{
+        method:"PATCH",
+        headers:{
+            'content-type':"application/json"
+        },
+        body:JSON.stringify(newProduct)
+      });
+      const result = res.json();
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
