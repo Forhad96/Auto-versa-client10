@@ -42,7 +42,7 @@ const AuthProvider = ({children}) => {
   // sing in user
   const singInWithEmail = (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(email, password);
+    return signInWithEmailAndPassword(auth,email, password);
   };
 
   // sing out user

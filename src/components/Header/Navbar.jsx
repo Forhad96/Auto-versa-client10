@@ -12,7 +12,7 @@ const Navbar = () => {
             toast.success("LogOut Successful");
           })
           .catch((error) => {
-            toast.error(error.code);
+            toast.error(error.message);
           });
   }
 
@@ -26,6 +26,9 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to='/cart'>Cart</NavLink>
+      </li>
+      <li>
+        <NavLink to='/AboutUs'>About Us</NavLink>
       </li>
 
     </>
