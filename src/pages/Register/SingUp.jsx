@@ -1,7 +1,58 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 
 const SingUp = () => {
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate()
+
+  const handleRegister = (event)=>{
+    event.preventDefault();
+    const form = new FormData(event.target);
+    const name = form.get("name");
+    const photo = form.get("photo");
+    const email = form.get("email");
+    const password = form.get("password");
+    console.log("clicked", email, password);
+
+    // create user firebase
+    // validation
+    const capitalValid = /[A-Z]/.test(password);
+    const spacialCharValid = /[^A-Za-z0-9]/.test(password);
+   if (password.length < 6) {
+
+      toast.error("Password must 6 characters or long");
+      return false;
+    } else if (!capitalValid) {
+
+      toast.error("Password must contain at least one capital letter.");
+      return false;
+    } else if (!spacialCharValid) {
+      toast.error("Password must contain at least one special character.");
+
+      return false;
+    }
+    // create user in firebase
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        updateUserProfile(name, photo)
+          .then(() => {
+            toast.success("Successfully create account");
+            navigate("/");
+          })
+          .catch((error) => {
+            toast.error(error.code);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.code);
+      });
+  }
     return (
       <div
         className="bg-cover bg-center bg-fixed"
@@ -16,7 +67,11 @@ const SingUp = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Create an account
               </h1>
-              <form className="space-y-4 md:space-y-6" method="POST">
+              <form
+                onSubmit={handleRegister}
+                className="space-y-4 md:space-y-6"
+                method="POST"
+              >
                 <div>
                   <label
                     htmlFor="name"
@@ -29,23 +84,39 @@ const SingUp = () => {
                     name="name"
                     id="name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Emelia Erickson"
+                    placeholder="Enter Full name"
                     required=""
                   />
                 </div>
                 <div>
                   <label
-                    htmlFor="username"
+                    htmlFor="name"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Username
+                    Your Photo Url
                   </label>
                   <input
                     type="text"
-                    name="username"
-                    id="username"
+                    name="photo"
+                    id="photo"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="emelia_erickson24"
+                    placeholder="Enter Photo Url"
+                    required=""
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="emil"
+                    name="email"
+                    id="email"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter Email"
                     required=""
                   />
                 </div>
@@ -75,7 +146,6 @@ const SingUp = () => {
                   Already have an account?{" "}
                   <a
                     className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                    href="/signin"
                   >
                     Sign in here
                   </a>

@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const BrandsCard = ({ brand }) => {
 const navigate = useNavigate()
-const location = useLocation()
-console.log(location);
   const handleBrandCars =(_id)=>{
     console.log(_id);
     navigate(`/cars/${_id}`)

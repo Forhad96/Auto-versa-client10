@@ -19,14 +19,12 @@ const CarsDetails = () => {
         const result = Object.values(car);
         const filteredCar = result.find((carName) => carName === id);
         if (filteredCar) {
-          console.log(car);
-       
           data.car = car
         }
       });
     });
     const {car} =data
-console.log(car);
+
 
 
 
