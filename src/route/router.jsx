@@ -5,6 +5,7 @@ import BrandCars from "../pages/BrandCars/BrandCars";
 import Login from "../pages/Register/Login";
 import SingUp from "../pages/Register/SingUp";
 import AddProduct from "../pages/AddProduct/AddProduct";
+import CarsDetails from "../pages/CarsDetails/CarsDetails";
 
 
 const router = createBrowserRouter([
@@ -15,27 +16,28 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/cars/:id",
+        element: <BrandCars></BrandCars>,
+      },
 
+      {
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path:'/cars/:id',
-        element:<BrandCars></BrandCars>,
-
-      },
-  
-      {
-        path:'/login',
-        element:<Login></Login>
+        path: "/singUp",
+        element: <SingUp></SingUp>,
       },
       {
-        path:'/singUp',
-        element:<SingUp></SingUp>
+        path: "/addProduct",
+        element: <AddProduct></AddProduct>,
       },
       {
-        path:"/addProduct",
-        element:<AddProduct></AddProduct>
-        
-      }
+        path: "/carsDetails",
+        element: <CarsDetails></CarsDetails>,
+      },
     ],
   },
 ]);

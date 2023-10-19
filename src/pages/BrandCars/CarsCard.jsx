@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
 
 const CarsCard = ({ model }) => {
-          
+          const handleCarDetails = (id)=>{
+            console.log(id);
+          }
   return (
     <>
       <link
@@ -46,6 +49,11 @@ const CarsCard = ({ model }) => {
               </div>
             </div>
           </div>
+          <Link to='/carsDetails'>
+
+          <button onClick={()=>handleCarDetails(model.name)} className="btn btn-success w-full">view details</button>
+          </Link>
+
           <div className="px-6 py-4">
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
               #photography
