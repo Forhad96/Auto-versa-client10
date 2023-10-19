@@ -13,6 +13,11 @@ const CarsCard = ({ model }) => {
                     console.log(error);
                   });
           }
+
+
+          const handleUpdate =(name)=>{
+            console.log(name);
+          }
   return (
     <>
       <link
@@ -57,14 +62,24 @@ const CarsCard = ({ model }) => {
               </div>
             </div>
           </div>
-          <Link to={`/carsDetails/${model.name}`}>
-            <button
-              onClick={() => handleCarDetails(model.name)}
-              className="btn btn-success w-full"
-            >
-              view details
-            </button>
-          </Link>
+          <div className="grid grid-cols-2 place-items-center">
+            <Link to={`/carsDetails/${model.name}`}>
+              <button
+                onClick={() => handleCarDetails(model.name)}
+                className="btn btn-success "
+              >
+                view details
+              </button>
+            </Link>
+            <Link to={`/updateProduct/${model.name}`}>
+              <button
+                onClick={() => handleUpdate(model.name)}
+                className="btn btn-success "
+              >
+                Update Details
+              </button>
+            </Link>
+          </div>
 
           <div className="px-6 py-4">
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">

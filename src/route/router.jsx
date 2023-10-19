@@ -9,6 +9,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Cart from "../pages/Cart/Cart";
 import Cars from "../pages/Cars/Cars";
+import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
 
 
 const router = createBrowserRouter([
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
         path:'/aboutUs',
         element:<AboutUs></AboutUs>
       },
+      {
+        path:'/updateProduct/:id',
+        element:<UpdateProduct></UpdateProduct>
+      }
     ],
   },
 ]);
