@@ -49,7 +49,7 @@ const CarsCard = ({ model }) => {
               </div>
             </div>
           </div>
-          <Link to='/carsDetails'>
+          <Link to={ `/carsDetails/${model.name}`}>
 
           <button onClick={()=>handleCarDetails(model.name)} className="btn btn-success w-full">view details</button>
           </Link>

@@ -1,4 +1,39 @@
+import { useParams } from "react-router-dom";
+import useGetBrands from "../../components/hooks/useGetBrands";
+import { useState } from "react";
+import { useEffect } from "react";
+
 const CarsDetails = () => {
+  const {id} = useParams()
+  const {brands,loading}= useGetBrands()
+  const [cars,setCars] = useState()
+
+  if(loading){
+    return <h2>Loading,,,,,,,</h2>
+  }
+
+    const models = brands.map((brand) => brand.models);
+  const data = {}
+    models.forEach((model) => {
+      model.forEach((car) => {
+        const result = Object.values(car);
+        const filteredCar = result.find((carName) => carName === id);
+        if (filteredCar) {
+          console.log(car);
+       
+          data.car = car
+        }
+      });
+    });
+    const {car} =data
+console.log(car);
+
+
+
+// console.log(result);
+// console.log(models[0][0].name);
+
+// console.log(filtered);
   return (
     <section className="py-20 font-poppins dark:bg-gray-800">
       <div className="max-w-6xl px-4 mx-auto">
@@ -130,12 +165,12 @@ const CarsDetails = () => {
           <div className="w-full px-4 md:w-1/2">
             <div className="lg:pl-20">
               <div className="mb-6 ">
-                <span className="text-red-500 dark:text-red-200">New</span>
+                <span className="text-red-500 dark:text-red-200">{car?.brandName}</span>
                 <h2 className="max-w-xl mt-2 mb-4 text-5xl font-bold md:text-6xl font-heading dark:text-gray-300">
-                  Buy One Plus 8 Pro
+                  {car?.name}
                 </h2>
                 <p className="max-w-md mb-4 text-gray-500 dark:text-gray-400">
-                  Get $100-$500 off when you trade in an one plus 6 or newer.
+                  {car?.longDescription}
                 </p>
                 <a
                   href="#"
