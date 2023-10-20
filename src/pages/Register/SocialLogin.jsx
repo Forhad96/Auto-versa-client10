@@ -1,9 +1,31 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const SocialLogin = () => {
+  const {googleLogin} = useContext(AuthContext)
+
+    const navigate = useNavigate();
+    const location = useLocation();
+  const handleSocial =(social)=>{
+    social()
+    .then(result=>{
+      console.log(result.user);
+      if(result.user){
+        toast.success('successfully logged')
+        navigate(`${location.state ? location.state : "/"}`);
+      }
+    })
+    .catch(error =>{
+      console.error(error);
+    })
+  }
     return (
       <a
         href="#"
+        onClick={()=>handleSocial(googleLogin)}
         className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
       >
         <div className="px-4 py-3">
