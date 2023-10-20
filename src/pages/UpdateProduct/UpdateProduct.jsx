@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import FetchData from "../../components/hooks/FetchData";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const UpdateProduct = () => {
     const {id} = useParams()
@@ -31,6 +32,9 @@ if(loading){
         body:JSON.stringify(newProduct)
       });
       const result = res.json();
+      if (result){
+      toast.success('Updated successfully') 
+      } 
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -279,7 +283,7 @@ if(loading){
                     className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-900 focus:outline-none focus:shadow-outline"
                     type="submit"
                   >
-                    Add Product
+                    Update Product
                   </button>
                 </div>
               </form>
