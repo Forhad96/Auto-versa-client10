@@ -5,17 +5,17 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 
-const all = import.meta.env
+const all = import.meta.env;
 console.log(all);
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB4Pn-CarTRPSXBo9XGbEzkA1Zg5WtQ7nY",
-  authDomain: "auto-versa.firebaseapp.com",
-  projectId: "auto-versa",
-  storageBucket: "auto-versa.appspot.com",
-  messagingSenderId: "761441577408",
-  appId: "1:761441577408:web:c1ba7faaee189bf4e6c025"
+  apiKey: all.VITE_APIKEY,
+  authDomain: all.VITE_AUTHDOMAIN,
+  projectId: all.VITE_PROJECTID,
+  storageBucket: all.VITE_STORAGEBUCKET,
+  messagingSenderId: all.VITE_MESSAGINGSENDERID,
+  appId: all.VITE_APPID,
 };
 
 // Initialize Firebase
