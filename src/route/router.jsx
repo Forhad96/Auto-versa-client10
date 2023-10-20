@@ -10,13 +10,14 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import Cart from "../pages/Cart/Cart";
 import Cars from "../pages/Cars/Cars";
 import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -40,8 +41,12 @@ const router = createBrowserRouter([
         element: <AddProduct></AddProduct>,
       },
       {
-        path:"/cart",
-        element:<Cart></Cart>
+        path: "/cart",
+        element: (
+          <PrivateRoute>
+            <Cart></Cart>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/carsDetails/:id",
@@ -49,13 +54,13 @@ const router = createBrowserRouter([
       },
 
       {
-        path:'/aboutUs',
-        element:<AboutUs></AboutUs>
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>,
       },
       {
-        path:'/updateProduct/:id',
-        element:<UpdateProduct></UpdateProduct>
-      }
+        path: "/updateProduct/:id",
+        element: <UpdateProduct></UpdateProduct>,
+      },
     ],
   },
 ]);
