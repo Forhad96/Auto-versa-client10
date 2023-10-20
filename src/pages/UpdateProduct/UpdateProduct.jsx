@@ -2,19 +2,22 @@ import { useParams } from "react-router-dom";
 import FetchData from "../../components/hooks/FetchData";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import Loading from "../../components/Loading/Loading";
 
 const UpdateProduct = () => {
-    const {id} = useParams()
-    const [updateData,setUpdateData]=useState([])
-    const {allData,loading} = FetchData(`http://localhost:7001/brands/${id}`);
+  const { id } = useParams();
+  const [updateData, setUpdateData] = useState([]);
+  const { allData, loading } = FetchData(
+    `https://auto-versa-server.vercel.app/brands/${id}`
+  );
 
-    useEffect(()=>{
-        const filteredData = allData?.models?.find(data => data.name === id)
-        setUpdateData(filteredData)
-    },[allData,id])
-if(loading){
-    return <h2 className="text-center text-6xl">Loading.....</h2>
-}
+  useEffect(() => {
+    const filteredData = allData?.models?.find((data) => data.name === id);
+    setUpdateData(filteredData);
+  }, [allData, id]);
+  if (loading) {
+    return <Loading></Loading>;
+  }
   const handleUpdateProduct = async (event) => {
     event.preventDefault();
     const form = new FormData(event.target);
@@ -24,17 +27,20 @@ if(loading){
     });
 
     try {
-      const res = await fetch(`http://localhost:7001/brands/${id}`,{
-        method:"PATCH",
-        headers:{
-            'content-type':"application/json"
-        },
-        body:JSON.stringify(newProduct)
-      });
+      const res = await fetch(
+        `https://auto-versa-server.vercel.app/brands/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newProduct),
+        }
+      );
       const result = res.json();
-      if (result){
-      toast.success('Updated successfully') 
-      } 
+      if (result) {
+        toast.success("Updated successfully");
+      }
       console.log(result);
     } catch (error) {
       console.log(error);

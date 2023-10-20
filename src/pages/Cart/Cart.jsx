@@ -2,29 +2,51 @@ import toast from "react-hot-toast";
 import FetchData from "../../components/hooks/FetchData";
 import { useState } from "react";
 import { useEffect } from "react";
+import Loading from "../../components/Loading/Loading";
+import swal from "sweetalert";
 
 const Cart = () => {
-  const { allData, loading } = FetchData("http://localhost:7001/cart");
-  const [cart,setCart]= useState([])
+  const { allData, loading } = FetchData(
+    "https://auto-versa-server.vercel.app/cart"
+  );
+  const [cart, setCart] = useState([]);
   useEffect(() => {
-    setCart(allData)
+    setCart(allData);
   }, [allData]);
 
   if (loading) {
-    return <h2 className="text-center text-6xl">Loading.....</h2>;
+    return <Loading></Loading>;
   }
 
   const handleRemove = async (_id) => {
     try {
-      const res = await fetch(`http://localhost:7001/cart/${_id}`, {
-        method: "DELETE",
+      let willDelete = await swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
       });
-      const result = await res.json();
-      console.log(result);
-      if(result.deletedCount){
-        toast.success('successfully Removed')
-        const remainder = cart.filter(car => car._id !== _id)
-        setCart(remainder)
+      if (willDelete) {
+        const res = await fetch(
+          `https://auto-versa-server.vercel.app/cart/${_id}`,
+          {
+            method: "DELETE",
+          }
+        );
+        const result = await res.json();
+        console.log(result);
+        if (result.deletedCount) {
+          toast.success("successfully Removed");
+
+          await swal("Poof! Your imaginary file has been deleted!", {
+            icon: "success",
+          });
+          const remainder = cart.filter((car) => car._id !== _id);
+          setCart(remainder);
+        }
+      } else {
+        await swal("Your imaginary file is safe!");
       }
     } catch (error) {
       console.log(error);

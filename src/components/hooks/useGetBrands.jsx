@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 const useGetBrands = () => {
-  const [brands, setBrands] = useState([]); 
+  const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:7001/brands")
+    fetch("https://auto-versa-server.vercel.app/brands")
       .then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");

@@ -3,33 +3,33 @@ import { useParams } from "react-router-dom";
 // import { useState } from "react";
 // import { useEffect } from "react";
 import FetchData from "../../components/hooks/FetchData";
+import Loading from "../../components/Loading/Loading";
 
 const CarsDetails = () => {
   const { id } = useParams();
   // const { brands, loading } = useGetBrands();
 
-  const { allData,loading } = FetchData(`http://localhost:7001/brands/${id}`);
-  const car = allData.models?.find(model=> model.name === id)
+  const { allData, loading } = FetchData(
+    `https://auto-versa-server.vercel.app/brands/${id}`
+  );
+  const car = allData.models?.find((model) => model.name === id);
 
   if (loading) {
-    return <h2>Loading,,,,,,,</h2>;
+    return <Loading></Loading>;
   }
 
   const handleAddCart = () => {
-
-    fetch(`http://localhost:7001/cart`,{
-      method:'POST',
-      headers:{
-        "content-type":"application/json"
+    fetch(`https://auto-versa-server.vercel.app/cart`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body:JSON.stringify(car)
+      body: JSON.stringify(car),
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        
-      })
-
+        console.log(data);
+      });
   };
 
   return (
@@ -382,7 +382,7 @@ const CarsDetails = () => {
               </div>
               <div className="mt-6 ">
                 <button
-                  onClick={ handleAddCart}
+                  onClick={handleAddCart}
                   className="w-full px-4 py-2 font-bold text-white bg-blue-400 lg:w-96 hover:bg-blue-500"
                 >
                   Add Cart

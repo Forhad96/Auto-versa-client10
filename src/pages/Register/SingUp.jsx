@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import SocialLogin from "./SocialLogin";
 
 
 
@@ -61,12 +62,24 @@ const SingUp = () => {
             'url("https://cdn.pixabay.com/photo/2017/06/24/17/34/car-2438269_1280.jpg")',
         }}
       >
-        <section className="flex flex-col items-center pt-6">
+        <section className="flex flex-col items-center py-6">
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                Create an account
-              </h1>
+              <h2 className="text-2xl font-semibold text-gray-700 text-center">
+                AutoVersa
+              </h2>
+              <p className="text-xl text-gray-600 text-center">Welcome !</p>
+              <SocialLogin></SocialLogin>
+              <div className="mt-4 flex items-center justify-between">
+                <span className="border-b w-1/5 lg:w-1/4" />
+                <a
+                  href="#"
+                  className="text-xs text-center text-gray-500 uppercase"
+                >
+                  or SingUp with email
+                </a>
+                <span className="border-b w-1/5 lg:w-1/4" />
+              </div>
               <form
                 onSubmit={handleRegister}
                 className="space-y-4 md:space-y-6"
@@ -144,9 +157,7 @@ const SingUp = () => {
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Already have an account?{" "}
-                  <a
-                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                  >
+                  <a className="font-medium text-blue-600 hover:underline dark:text-blue-500">
                     Sign in here
                   </a>
                 </p>

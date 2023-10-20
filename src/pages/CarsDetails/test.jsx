@@ -26,7 +26,7 @@ const CarsDetails = () => {
   const { car } = data;
 
   const handleAddCart = (name) => {
-    fetch(`http://localhost:7001/brands/${name}`)
+    fetch(`https://auto-versa-server.vercel.app/brands/${name}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

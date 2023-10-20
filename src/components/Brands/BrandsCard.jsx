@@ -2,20 +2,11 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 const BrandsCard = ({ brand }) => {
+
 const navigate = useNavigate()
   const handleBrandCars =(_id)=>{
-    console.log(_id);
     navigate(`/cars/${_id}`)
 
-
-    
-    fetch(`http://localhost:7001/brands/${_id}`)
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data);
-    })
-
-    
   }
   return (
     <div

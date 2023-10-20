@@ -1,23 +1,21 @@
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const CarsCard = ({ model }) => {
-          const handleCarDetails = (name)=>{
-            console.log(name);
-                fetch(`http://localhost:7001/brands/${name}`)
-                  .then((res) => res.json())
-                  .then((data) => {
-                    console.log(data);
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                  });
-          }
+  const handleCarDetails = (name) => {
+    fetch(`https://auto-versa-server.vercel.app/brands/${name}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-
-          const handleUpdate =(name)=>{
-            console.log(name);
-          }
+  // const handleUpdate =(name)=>{
+  //   console.log(name);
+  // }
   return (
     <>
       <link
@@ -35,18 +33,21 @@ const CarsCard = ({ model }) => {
             <div className="">
               <div className="flex items-center justify-between">
                 <div className="font-bold text-xl mb-2">{model.name}</div>
-                <span className="inline-block bg-teal-200 text-teal-800 py-1 px-4 text-xs rounded-full uppercase font-semibold tracking-wide">
+                <span className="inline-block bg-blue-200 text-blue-800 py-1 px-4 text-xs rounded-full uppercase font-semibold tracking-wide">
                   Year:-{model?.year}
                 </span>
               </div>
               <p className=" text-md font-medium">{model.shortDescription}</p>
 
               <div className="mt-1">
-                <span>$ {model.price}</span>
-                <span className="text-gray-600 text-sm">/ wk</span>
+                <span> Price: {model.price}</span>
+                <span className="text-gray-600 text-sm">$</span>
+              </div>
+              <div className="mt-1">
+                <span> Fuel Type:-{model?.fuelType}</span>
               </div>
               <div className="mt-2 flex items-center">
-                <span className="text-teal-600 font-semibold">
+                <span className="text-blue-600 font-semibold">
                   <span>
                     <i className="fas fa-star" />
                     <i className="fas fa-star" />
@@ -62,19 +63,20 @@ const CarsCard = ({ model }) => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 place-items-center">
+          <div className="flex justify-between px-6 gap-6">
             <Link to={`/carsDetails/${model.name}`}>
               <button
                 onClick={() => handleCarDetails(model.name)}
-                className="btn btn-success "
+                className="inline-block px-12 py-3 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded active:text-blue-500 hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring"
+                href="/download "
               >
                 view details
               </button>
             </Link>
             <Link to={`/updateProduct/${model.name}`}>
               <button
-                onClick={() => handleUpdate(model.name)}
-                className="btn btn-success "
+                // onClick={() => handleUpdate(model.name)}
+                className="inline-block px-12 py-3 text-sm font-medium text-blue-600 border border-blue-600 rounded hover:bg-blue-600 hover:text-white active:bg-blue-500 focus:outline-none focus:ring"
               >
                 Update Details
               </button>
@@ -82,9 +84,6 @@ const CarsCard = ({ model }) => {
           </div>
 
           <div className="px-6 py-4">
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-              Fuel Type:-{model?.fuelType}
-            </span>
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
               Engine Size:-{model?.engineSize}
             </span>
@@ -98,6 +97,6 @@ const CarsCard = ({ model }) => {
   );
 };
 CarsCard.propTypes = {
-    model: PropTypes.object.isRequired
-}
+  model: PropTypes.object.isRequired,
+};
 export default CarsCard;

@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
+// import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import PropTypes from 'prop-types'
 
 // Import Swiper styles
 import "swiper/css";
@@ -25,11 +26,11 @@ export default function Slider({images}) {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
+        // navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        {images.map((image, index) => (
+        {images?.map((image, index) => (
           <SwiperSlide key={index}>
             <img src={image} alt={`Slide ${index + 1}`} />
           </SwiperSlide>
@@ -37,4 +38,7 @@ export default function Slider({images}) {
       </Swiper>
     </>
   );
+}
+Slider.propTypes ={
+  images: PropTypes.array.isRequired
 }

@@ -1,7 +1,6 @@
 import toast from "react-hot-toast";
 
 const AddProduct = () => {
-
   const handleAddProduct = async (event) => {
     event.preventDefault();
     const form = new FormData(event.target);
@@ -12,25 +11,25 @@ const AddProduct = () => {
     const { brandName } = newProduct;
 
     try {
-      const res = await fetch(`http://localhost:7001/brands/${brandName}`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body:JSON.stringify(newProduct)
-      });
+      const res = await fetch(
+        `https://auto-versa-server.vercel.app/brands/${brandName}`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newProduct),
+        }
+      );
       const result = res.json();
       console.log(result);
-      if(result){
-        toast.success('Product add successful')
+      if (result) {
+        toast.success("Product add successful");
         event.target.reset();
-        
       }
     } catch (error) {
       console.log(error);
     }
-
-
   };
   return (
     <>
