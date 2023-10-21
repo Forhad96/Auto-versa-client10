@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import ThemeToggle from "../../ThemeToggle/ThemeToggle";
+import NavLogo from "./NavLogo";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -38,8 +39,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar px-8">
-      <div className="navbar-start">
+    <div className="navbar px-10">
+      <div className="navbar-start relative">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
@@ -64,8 +65,11 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
-          AutoVersa
+        <Link to="/" className="  normal-case text-xl">
+          <NavLogo></NavLogo>
+          <span className="absolute top-10 font-bold text-[#29abe2]">
+            AutoVersa
+          </span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

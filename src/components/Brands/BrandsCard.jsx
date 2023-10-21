@@ -8,7 +8,6 @@ const navigate = useNavigate()
     navigate(`/cars/${_id}`)
 
   }
-  console.log(brand.models);
   return (
     <div
       onClick={() => handleBrandCars(`${brand._id}`)}
