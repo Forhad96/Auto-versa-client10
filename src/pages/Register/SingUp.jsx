@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 
 
@@ -157,9 +157,9 @@ const SingUp = () => {
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Already have an account?{" "}
-                  <a className="font-medium text-blue-600 hover:underline dark:text-blue-500">
+                  <Link to='/login' className="font-medium text-blue-600 hover:underline dark:text-blue-500">
                     Sign in here
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>

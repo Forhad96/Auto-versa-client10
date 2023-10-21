@@ -57,7 +57,7 @@ const Cart = () => {
   return (
     <section className="items-center py-24 bg-gray-50 font-poppins dark:bg-gray-700">
       <div className="justify-center flex-1 max-w-6xl px-4 py-6 mx-auto lg:py-4 md:px-6">
-        <h2 className="mb-10 text-4xl font-bold text-center dark:text-gray-400">
+        <h2 className="mb-10 text-4xl font-bold text-center dark:text-gray-200">
           Your Cart
         </h2>
         {cart?.map((car) => (
@@ -72,19 +72,19 @@ const Cart = () => {
               </div>
               <div className="w-full px-4 mb-6 md:w-96 xl:mb-0">
                 <a
-                  className="block mb-5 text-xl font-medium dark:text-gray-400 hover:underline"
+                  className="block mb-5 text-xl font-medium dark:text-gray-200 hover:underline"
                   href="#"
                 >
                   {car?.name}
                 </a>
                 <div className="flex flex-wrap">
                   <p className="mr-4 text-sm font-medium">
-                    <span className="dark:text-gray-400">Color:</span>
+                    <span className="dark:text-gray-200">Color:</span>
                     <span className="ml-2 text-gray-400 dark:text-gray-400">
                       red
                     </span>
                   </p>
-                  <p className="text-sm font-medium dark:text-gray-400">
+                  <p className="text-sm font-medium dark:text-gray-200">
                     <span>Size:</span>
                     <span className="ml-2 text-gray-400">39</span>
                   </p>
