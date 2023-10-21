@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
-
+import ThemeToggle from "../../ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -38,7 +38,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar px-8">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -64,7 +64,9 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost normal-case text-xl">AutoVersa</Link>
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
+          AutoVersa
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -84,7 +86,9 @@ const Navbar = () => {
               <li>
                 <a className="justify-between">
                   Profile
-                  <span className="badge">New</span>
+                  <span className="badge bg-blue-600 text-white">
+                    {user?.displayName}
+                  </span>
                 </a>
               </li>
               <li>
@@ -97,11 +101,16 @@ const Navbar = () => {
           </div>
         ) : (
           <div>
+            <ThemeToggle></ThemeToggle>
             <Link to="/login">
-              <button className="btn">Login</button>
+              <button className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold py-2 px-4 rounded">
+                Login
+              </button>
             </Link>
             <Link to="/singUp">
-              <button className="btn">Register</button>
+              <button className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold py-2 px-4 rounded">
+                Register
+              </button>
             </Link>
           </div>
         )}

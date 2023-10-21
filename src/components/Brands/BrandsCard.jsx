@@ -12,7 +12,7 @@ const navigate = useNavigate()
     <div
       onClick={() => handleBrandCars(`${brand._id}`)}
       
-      className=" m-4 relative overflow-hidden bg-slate-600 bg-blend-darken rounded-lg max-w-ful shadow-lg group"
+      className=" m-4 relative overflow-hidden bg-gray-600 dark:bg-transparent bg-blend-darken rounded-lg max-w-ful shadow-lg group"
     >
       <svg
         className="absolute bottom-0 left-0 mb-8 scale-150 group-hover:scale-[1.65] transition-transform"

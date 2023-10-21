@@ -5,16 +5,17 @@ import { Toaster } from "react-hot-toast";
 
 
 const MainLayout = () => {
-    return (
-      <div className="mx-10">
-        <Navbar></Navbar>
-        <Outlet></Outlet>
-        <div>
-          <Toaster />
-        </div>
-        <Footer></Footer>
+  return (
+    <div className=" bg-base-100  dark:bg-gray-800  text-gray-800 dark:text-gray-200">
+      <Navbar></Navbar>
+
+      <Outlet></Outlet>
+      <div>
+        <Toaster />
       </div>
-    );
+      <Footer></Footer>
+    </div>
+  );
 };
 
 export default MainLayout;

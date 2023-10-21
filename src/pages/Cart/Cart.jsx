@@ -65,7 +65,7 @@ const Cart = () => {
             <div className="relative flex flex-wrap items-center pb-8 mb-8 -mx-4 border-b border-gray-200 dark:border-gray-500 xl:justify-between border-opacity-40">
               <div className="w-full mb-4 md:mb-0 h-96 md:h-44 md:w-56">
                 <img
-                  src="https://i.postimg.cc/tghbJjN7/pexels-web-donut-19090.jpg"
+                  src={car?.image}
                   alt=""
                   className="object-cover w-full h-full"
                 />
@@ -137,7 +137,7 @@ const Cart = () => {
               <div className="w-full px-4 xl:w-auto">
                 <span className="text-xl font-medium text-blue-500 dark:text-blue-400">
                   <span className="text-sm">$</span>
-                  <span>544.90</span>
+                  <span>{car?.price}</span>
                 </span>
               </div>
             </div>

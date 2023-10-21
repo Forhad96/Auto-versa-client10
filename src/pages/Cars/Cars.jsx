@@ -13,18 +13,15 @@ const Cars = () => {
   if (loading) {
     return <Loading></Loading>;
   }
-  // if (singleData.models.length < 0) {
-  //   return <NoProduct></NoProduct>;
-  // }
-  console.log(singleData.models.length);
-  return singleData.models.length <= 0 ? (
-    <NoProduct></NoProduct>
-  ) : (
+  if (singleData.models.length <= 0) {
+    return <NoProduct></NoProduct>;
+  }
+  return (
     <div>
       <CarsPromo></CarsPromo>
       {/* brand cars */}
       <div className="grid md:grid-cols-3">
-        {singleData.models.map((model, idx) => (
+        {singleData.models.map((model,idx) => (
           <CarsCard key={idx} model={model}></CarsCard>
         ))}
       </div>

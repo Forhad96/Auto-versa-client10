@@ -1,13 +1,16 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import useGetBrands from "../../components/hooks/useGetBrands";
 // import { useState } from "react";
 // import { useEffect } from "react";
 import FetchData from "../../components/hooks/FetchData";
 import Loading from "../../components/Loading/Loading";
+import Slider from "../../components/Slider/Slider";
+import toast from "react-hot-toast";
 
 const CarsDetails = () => {
   const { id } = useParams();
   // const { brands, loading } = useGetBrands();
+  const navigate = useNavigate()
 
   const { allData, loading } = FetchData(
     `https://auto-versa-server.vercel.app/brands/${id}`
@@ -29,108 +32,30 @@ const CarsDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if(data.acknowledged){
+          toast.success('successfully added')
+        navigate('/cart')
+        }
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
+
+  const images = [
+    "https://cdn.pixabay.com/photo/2020/07/11/13/23/mercury-5393997_1280.png",
+    "https://cdn.pixabay.com/photo/2015/05/08/23/45/austro-759074_1280.jpg",
+    "https://cdn.pixabay.com/photo/2012/04/26/14/04/car-42552_1280.png",
+  ];
 
   return (
     <section className="py-20 font-poppins dark:bg-gray-800">
       <div className="max-w-6xl px-4 mx-auto">
         <div className="flex flex-wrap mb-24 -mx-4">
-          <div className="w-full px-4 mb-8 md:w-1/2 md:mb-0">
+          <div className="w-full px-4 mb-8  md:w-1/2 md:mb-0">
             <div className="sticky top-0 z-50 overflow-hidden ">
-              <div className="relative mb-6 lg:mb-10 ">
-                <a
-                  className="absolute left-0 transform lg:ml-2 top-1/2 translate-1/2"
-                  href="#"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={16}
-                    height={16}
-                    fill="currentColor"
-                    className="w-5 h-5 text-blue-500 bi bi-chevron-left dark:text-blue-200"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-                    />
-                  </svg>
-                </a>
-                <img
-                  className="object-cover w-full lg:h-1/2"
-                  src="https://cdn.pixabay.com/photo/2013/07/12/17/37/classic-car-152118_1280.png"
-                  alt=""
-                />
-                <a
-                  className="absolute right-0 transform lg:mr-2 top-1/2 translate-1/2"
-                  href="#"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={16}
-                    height={16}
-                    fill="currentColor"
-                    className="w-5 h-5 text-blue-500 bi bi-chevron-right dark:text-blue-200"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                    />
-                  </svg>
-                </a>
-              </div>
-              <div className="flex-wrap hidden -mx-2 md:flex">
-                <div className="w-1/2 p-2 sm:w-1/4">
-                  <a
-                    className="block border border-transparent hover:border-blue-400"
-                    href="#"
-                  >
-                    <img
-                      className="object-cover w-full lg:h-32"
-                      src="https://cdn.pixabay.com/photo/2013/07/12/17/37/classic-car-152118_1280.png"
-                      alt=""
-                    />
-                  </a>
-                </div>
-                <div className="w-1/2 p-2 sm:w-1/4">
-                  <a
-                    className="block border border-transparent hover:border-blue-400"
-                    href="#"
-                  >
-                    <img
-                      className="object-cover w-full lg:h-32"
-                      src="https://i.postimg.cc/prW7DGkK/R-14.png"
-                      alt=""
-                    />
-                  </a>
-                </div>
-                <div className="w-1/2 p-2 sm:w-1/4">
-                  <a
-                    className="block border border-transparent hover:border-blue-400"
-                    href="#"
-                  >
-                    <img
-                      className="object-cover w-full lg:h-32"
-                      src="https://i.postimg.cc/prW7DGkK/R-14.png"
-                      alt=""
-                    />
-                  </a>
-                </div>
-                <div className="w-1/2 p-2 sm:w-1/4">
-                  <a
-                    className="block border border-transparent hover:border-blue-400"
-                    href="#"
-                  >
-                    <img
-                      className="object-cover w-full lg:h-32"
-                      src="https://i.postimg.cc/prW7DGkK/R-14.png"
-                      alt=""
-                    />
-                  </a>
-                </div>
-              </div>
+              <Slider images={images}></Slider>
+
               <div className="px-6 pb-6 mt-6 border-t border-gray-300 dark:border-gray-400 ">
                 <div className="flex items-center justify-center mt-6">
                   <span className="mr-3">
@@ -153,7 +78,7 @@ const CarsDetails = () => {
                       className="text-xs text-blue-400 lg:text-sm dark:text-blue-200"
                       href="#"
                     >
-                      Chat with an Oneplus specialist
+                      Chat with an specialist
                     </a>
                   </div>
                 </div>
@@ -163,7 +88,7 @@ const CarsDetails = () => {
           <div className="w-full px-4 md:w-1/2">
             <div className="lg:pl-20">
               <div className="mb-6 ">
-                <span className="text-red-500 dark:text-red-200">
+                <span className="text-red-500 text-xl font-bold dark:text-red-200">
                   {car?.brandName}
                 </span>
                 <h2 className="max-w-xl mt-2 mb-4 text-5xl font-bold md:text-6xl font-heading dark:text-gray-300">
@@ -181,7 +106,7 @@ const CarsDetails = () => {
               </div>
               <div className="">
                 <p className="mb-4 text-lg font-semibold dark:text-gray-400">
-                  Choose your finish
+                  Choose your desire color
                 </p>
                 <div className="grid grid-cols-2 gap-4 pb-4 border-b-2 border-gray-300 lg:grid-cols-3 dark:border-gray-600">
                   <div>
@@ -238,60 +163,32 @@ const CarsDetails = () => {
               </div>
               <div className="mt-6">
                 <p className="mb-2 text-lg font-semibold dark:text-gray-400">
-                  Choose your Capacity
+                  Specification
                 </p>
-                <a
-                  href="#"
-                  className="text-blue-500 hover:underline dark:text-gray-400"
-                >
-                  How much capacity is right for you?
-                </a>
+
                 <div className="grid grid-cols-2 gap-4 pb-4 mt-2 mb-4 border-b-2 border-gray-300 lg:grid-cols-3 dark:border-gray-600">
                   <div>
                     <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-600 hover:border-blue-400">
-                      <div>
-                        <div className="mb-2 font-semibold dark:text-gray-400">
-                          128 <span className="text-xs">GB</span>
-                        </div>
-                        <p className="px-2 text-xs font-medium text-center text-gray-700 dark:text-gray-400">
-                          From $99 0r $41.62/mo. for 24 mo.
-                        </p>
+                      <div className="mb-2 font-semibold dark:text-gray-400">
+                        Engine: 3.3L V6, Horse power: 181
                       </div>
                     </button>
                   </div>
                   <div>
                     <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-600 hover:border-blue-400">
-                      <div>
-                        <div className="mb-2 font-semibold dark:text-gray-400">
-                          256 <span className="text-xs">GB</span>
-                        </div>
-                        <p className="px-2 text-xs font-medium text-center text-gray-700 dark:text-gray-400">
-                          From $99 0r $41.62/mo. for 24 mo.
-                        </p>
+                      <div className="mb-2 font-semibold dark:text-gray-400">
+                        Fuel_efficiency: 28{" "}
+                        <span className="text-xs">
+                          mpg city / 34 mpg highway
+                        </span>
                       </div>
                     </button>
                   </div>
+
                   <div>
                     <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-600 hover:border-blue-400">
-                      <div>
-                        <div className="mb-2 font-semibold dark:text-gray-400">
-                          512 <span className="text-xs">GB</span>
-                        </div>
-                        <p className="px-2 text-xs font-medium text-center text-gray-700 dark:text-gray-400">
-                          From $99 0r $41.62/mo. for 24 mo.
-                        </p>
-                      </div>
-                    </button>
-                  </div>
-                  <div>
-                    <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-600 hover:border-blue-400">
-                      <div>
-                        <div className="mb-2 font-semibold dark:text-gray-400">
-                          1 <span className="text-xs">GB</span>
-                        </div>
-                        <p className="px-2 text-xs font-medium text-center text-gray-700 dark:text-gray-400">
-                          From $99 0r $41.62/mo. for 24 mo.
-                        </p>
+                      <div className="mb-2 font-semibold dark:text-gray-400">
+                        Price range: $24,885 - $36,300
                       </div>
                     </button>
                   </div>
