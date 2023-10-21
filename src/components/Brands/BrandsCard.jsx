@@ -8,10 +8,10 @@ const navigate = useNavigate()
     navigate(`/cars/${_id}`)
 
   }
+  console.log(brand.models);
   return (
     <div
       onClick={() => handleBrandCars(`${brand._id}`)}
-      
       className=" m-4 relative overflow-hidden bg-gray-600 dark:bg-transparent bg-blend-darken rounded-lg max-w-ful shadow-lg group"
     >
       <svg
@@ -47,17 +47,13 @@ const navigate = useNavigate()
             opacity: "0.2",
           }}
         ></div>
-        <img
-          className="relative w-32 object-cover"
-          src={brand?.logo}
-          alt=""
-        />
+        <img className="relative w-32 object-cover" src={brand?.logo} alt="" />
       </div>
       <div className="relative text-white px-6 pb-6 mt-6">
         <div className="flex justify-between">
           <span className="block font-semibold text-xl">{brand?.brand}</span>
           <span className=" bg-white rounded-full text-orange-500 text-xs font-bold px-3 py-2 leading-none flex items-center">
-            update
+            {brand?.models.length <= 0 ? "Stock out" : "Available"}
           </span>
         </div>
       </div>

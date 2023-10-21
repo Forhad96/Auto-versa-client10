@@ -71,7 +71,7 @@ const UpdateProduct = () => {
                       Brand Name
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="brandName"
                       name="brandName"
                       type="text"
@@ -87,7 +87,7 @@ const UpdateProduct = () => {
                       Name
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="name"
                       name="name"
                       type="text"
@@ -103,7 +103,7 @@ const UpdateProduct = () => {
                       Type
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="type"
                       name="type"
                       type="text"
@@ -123,7 +123,7 @@ const UpdateProduct = () => {
                       Image Url
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="image"
                       name="image"
                       type="text"
@@ -139,7 +139,7 @@ const UpdateProduct = () => {
                       Price
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="price"
                       name="price"
                       type="text"
@@ -155,7 +155,7 @@ const UpdateProduct = () => {
                       Color
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="color"
                       name="color"
                       type="text"
@@ -174,7 +174,7 @@ const UpdateProduct = () => {
                       Fuel Type
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="fuelType"
                       name="fuelType"
                       type="text"
@@ -190,7 +190,7 @@ const UpdateProduct = () => {
                       Year
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="year"
                       name="year"
                       type="text"
@@ -206,7 +206,7 @@ const UpdateProduct = () => {
                       Engine Size
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="engineSize"
                       name="engineSize"
                       type="text"
@@ -225,7 +225,7 @@ const UpdateProduct = () => {
                       Cylinder
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="cylinder"
                       name="cylinder"
                       type="text"
@@ -241,7 +241,7 @@ const UpdateProduct = () => {
                       Short Description
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="shortDescription"
                       name="shortDescription"
                       type="text"
@@ -257,7 +257,7 @@ const UpdateProduct = () => {
                       Ratings
                     </label>
                     <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="rating"
                       name="rating"
                       type="text"
@@ -275,7 +275,7 @@ const UpdateProduct = () => {
                     Long Description
                   </label>
                   <textarea
-                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 dark:text-black border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     id="longDescription"
                     type=""
                     name="longDescription"

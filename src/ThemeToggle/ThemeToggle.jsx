@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
  const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const prefersDarkMode = useMediaQuery({
-    query: "(prefers-color-scheme: dark)",
-  });
+  const [isDarkMode, setIsDarkMode] = useState(
+    JSON.parse(localStorage.getItem("darkMode")) || false
+  );
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
+    localStorage.setItem("darkMode", JSON.stringify(!isDarkMode));
     document.documentElement.classList.toggle("dark");
   };
 
   useEffect(() => {
-    if (prefersDarkMode) {
-      setIsDarkMode(true);
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
-  }, [prefersDarkMode]);
+  }, [isDarkMode]);
 
   return (
     <button
