@@ -43,11 +43,10 @@ const CarsDetails = () => {
   };
 
   const images = [
-    "https://cdn.pixabay.com/photo/2020/07/11/13/23/mercury-5393997_1280.png",
-    "https://cdn.pixabay.com/photo/2015/05/08/23/45/austro-759074_1280.jpg",
-    "https://cdn.pixabay.com/photo/2012/04/26/14/04/car-42552_1280.png",
+    "https://cdn.pixabay.com/photo/2013/07/13/11/48/bmw-158704_1280.png",
+    "https://cdn.pixabay.com/photo/2019/12/19/18/50/car-4706844_1280.png",
+    "https://cdn.pixabay.com/photo/2013/07/13/11/48/bmw-158703_1280.png",
   ];
-
   return (
     <section className="py-20 font-poppins dark:bg-gray-800">
       <div className="max-w-6xl px-4 mx-auto">

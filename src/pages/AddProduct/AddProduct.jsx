@@ -64,7 +64,7 @@ const AddProduct = () => {
                       /> */}
                     <select
                       name="brandName"
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700  rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     >
                       <option disabled defaultValue={"Select"}>
                         Select Brand?

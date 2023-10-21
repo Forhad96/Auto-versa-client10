@@ -8,7 +8,6 @@ const MainLayout = () => {
   return (
     <div className=" bg-base-100  dark:bg-gray-800  text-gray-800 dark:text-gray-200">
       <Navbar></Navbar>
-
       <Outlet></Outlet>
       <div>
         <Toaster />

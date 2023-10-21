@@ -17,10 +17,11 @@ const Cars = () => {
     return <NoProduct></NoProduct>;
   }
   return (
-    <div>
+    <div className="md:mb-20">
       <CarsPromo></CarsPromo>
+      <h1 className="text-6xl text-center my-4 md:my-8">Choose your Dream Car</h1>
       {/* brand cars */}
-      <div className="grid md:grid-cols-3">
+      <div className="grid mx-4 md:mx-8 md:grid-cols-2 lg:grid-cols-3">
         {singleData.models.map((model,idx) => (
           <CarsCard key={idx} model={model}></CarsCard>
         ))}

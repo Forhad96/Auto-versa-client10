@@ -1,35 +1,16 @@
-// import AwesomeSlider from "react-awesome-slider";
-// import withAutoplay from "react-awesome-slider/dist/autoplay";
-// import "react-awesome-slider/dist/styles.css";
+import Slider from '../../components/Slider/Slider'
 
-// const AutoplaySlider = withAutoplay(AwesomeSlider);
-
-const data = [
-  {
-    id: 1,
-    title: "Slide 1",
-    image:
-      "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1528",
-  },
-  {
-    id: 2,
-    title: "Slide 2",
-    image:
-      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1470",
-  },
-  {
-    id: 3,
-    title: "Slide 3",
-    image:
-      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1470",
-  },
-];
+  const images = [
+    "https://cdn.pixabay.com/photo/2013/07/13/11/48/bmw-158704_1280.png",
+    "https://cdn.pixabay.com/photo/2019/12/19/18/50/car-4706844_1280.png",
+    "https://cdn.pixabay.com/photo/2013/07/13/11/48/bmw-158703_1280.png",
+  ];
 const Banner = () => {
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center bg-base-100  dark:bg-gray-800  text-gray-800 dark:text-gray-200 overflow-hidden">
       <div className="pt-10 sm:pt-20 lg:pt-40 w-full flex flex-col lg:flex-row">
         {/* :HERO MAIN */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center items-center text-gray-600 dark:text-gray-200">
+        <div className="w-full lg:w-1/2 flex flex-col justify-center items-center  dark:text-gray-200">
           {" "}
           {/* Container */}
           {/* ::Hero Inner */}
@@ -40,8 +21,8 @@ const Banner = () => {
               Destination for <br /> Premium Cars
             </h1>
             {/* Starting Price */}
-            <p className="text-lg font-semibold text-gray-400 dark:text-gray-200 tracking-wide">
-              Explore a wide range of luxury and performance cars from top
+            <p className="text-lg font-semibold  dark:text-gray-200 tracking-wide">
+              Explore a wide range of luxury and performance cars from <br /> top
               brands.
             </p>
             {/* Buttons */}
@@ -57,11 +38,7 @@ const Banner = () => {
         </div>
         {/* :HERO ILLUSTRATION */}
         <div className="relative w-full lg:w-1/2 flex flex-col justify-center items-center overflow-hidden">
-          <img
-            src="https://fancytailwind.com/static/8b86283c874a1f43a78c79fe871525ff/d552e/illustration1.webp"
-            alt=""
-            className="w-2/3 lg:w-full"
-          />
+        <Slider images={images}></Slider>
         </div>
       </div>
 

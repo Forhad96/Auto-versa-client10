@@ -34,7 +34,7 @@ console.log(email,password);
   return (
     <>
       <div className="py-16">
-        <div className="flex bg-white rounded-lg  shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+        <div className="flex bg-white dark:bg-transparent rounded-lg  shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
           <div
             className="hidden lg:block lg:w-1/2 bg-cover"
             style={{
@@ -44,10 +44,12 @@ console.log(email,password);
             }}
           ></div>
           <div className="w-full p-8 lg:w-1/2">
-            <h2 className="text-2xl font-semibold text-gray-700 text-center">
+            <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 text-center">
               AutoVersa
             </h2>
-            <p className="text-xl text-gray-600 text-center">Welcome back!</p>
+            <p className="text-xl text-gray-600 dark:text-gray-200 text-center">
+              Welcome back!
+            </p>
             <SocialLogin></SocialLogin>
             <div className="mt-4 flex items-center justify-between">
               <span className="border-b w-1/5 lg:w-1/4" />
@@ -62,7 +64,7 @@ console.log(email,password);
             {/* form field */}
             <form onSubmit={handleLogin}>
               <div className="mt-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2">
+                <label className="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">
                   Email Address
                 </label>
                 <input
@@ -73,7 +75,7 @@ console.log(email,password);
               </div>
               <div className="mt-4">
                 <div className="flex justify-between">
-                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                  <label className="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">
                     Password
                   </label>
                   <a href="#" className="text-xs text-gray-500">
@@ -87,7 +89,10 @@ console.log(email,password);
                 />
               </div>
               <div className="mt-8">
-                <button type="submit" className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">
+                <button
+                  type="submit"
+                  className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600"
+                >
                   Login
                 </button>
               </div>

@@ -25,7 +25,7 @@ const SocialLogin = () => {
     return (
       <a
         href="#"
-        onClick={()=>handleSocial(googleLogin)}
+        onClick={() => handleSocial(googleLogin)}
         className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
       >
         <div className="px-4 py-3">
@@ -48,7 +48,7 @@ const SocialLogin = () => {
             />
           </svg>
         </div>
-        <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
+        <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 dark:text-gray-300 font-bold">
           Sign in with Google
         </h1>
       </a>
