@@ -48,15 +48,15 @@ const navigate = useNavigate()
           }}
         ></div>
         <img
-          className="relative w-40 object-cover"
-          src="https://cdn.pixabay.com/photo/2016/08/15/18/18/bmw-1596080_1280.png"
+          className="relative w-32 object-cover"
+          src={brand?.logo}
           alt=""
         />
       </div>
       <div className="relative text-white px-6 pb-6 mt-6">
         <div className="flex justify-between">
-          <span className="block font-semibold text-xl">{brand.brand}</span>
-          <span className="block bg-white rounded-full text-orange-500 text-xs font-bold px-3 py-2 leading-none flex items-center">
+          <span className="block font-semibold text-xl">{brand?.brand}</span>
+          <span className=" bg-white rounded-full text-orange-500 text-xs font-bold px-3 py-2 leading-none flex items-center">
             update
           </span>
         </div>

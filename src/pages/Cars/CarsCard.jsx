@@ -25,8 +25,8 @@ const CarsCard = ({ model }) => {
       <div className="flex px-3 py-3">
         <div className="max-w-full rounded overflow-hidden shadow-lg">
           <img
-            className="w-full"
-            src="https://cdn.pixabay.com/photo/2017/11/09/09/43/wiesmann-gt-mf4-2932846_1280.png"
+            className="w-full h-[200px]"
+            src={model?.image}
             alt="Sunset in the mountains"
           />
           <div className="px-6 py-4">

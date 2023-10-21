@@ -47,8 +47,8 @@ const Testimonial = () => {
                   <p className="mb-4 text-base leading-7 text-gray-400">
                     Auto Versa exceeded my expectations. Their professionalism
                     and expertise made the car-buying process smooth. They found
-                    me the perfect car, and I couldn't be happier with their
-                    service.
+                    me the perfect car, and I couldn&lsquo;t be happier with
+                    their service.
                   </p>
                   <h2 className="text-lg font-bold leading-9 text-black dark:text-white">
                     Allyson Smith

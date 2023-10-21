@@ -10,6 +10,8 @@ const Cart = () => {
     "https://auto-versa-server.vercel.app/cart"
   );
   const [cart, setCart] = useState([]);
+
+
   useEffect(() => {
     setCart(allData);
   }, [allData]);
